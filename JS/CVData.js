@@ -2,6 +2,7 @@ const BIO = "<strong>Niels Gercama</strong> is a new media artist and author bet
 
 const EVENTS = [
 	{year: 2025, content: '"Hellish Machine" dir. Dani Ploeger, Film By The Sea, Vlissingen, NL'},
+	{year: 2025, content: '"AI Owned By No-one", Hands-on workshop for the HGB Leipzig, DE'},
 	{year: 2025, content: '"Neuk&ouml;lln Spiderman" dir. Altay Erlik, Istanbul Film Festival, Istanbul, TR'},
 	{year: 2025, content: '"Castles In The Sky", Guest lecturer graduate course at MA New Practice, UdK / TU Berlin, DE'},
 	{year: 2025, content: '"Unique Cherub", Group exhibit: Symb 5, Kunsthalle Lausitz, Cottbus, DE'},
