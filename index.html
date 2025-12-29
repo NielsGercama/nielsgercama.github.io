@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <style>
+        * {
+            cursor: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 2rem;
+            letter-spacing: 0.08em;
+        }
+
+        h1::selection {
+            background-color: #333;
+            color: #90EE90;
+        }
+
+        h1::-moz-selection {
+            background-color: #333;
+            color: #90EE90;
+        }
+
+        .links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        a {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+            font-size: 1.1rem;
+            color: black;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s ease;
+        }
+
+        a::selection {
+            background-color: #333;
+            color: #90EE90;
+        }
+
+        a::-moz-selection {
+            background-color: #333;
+            color: #90EE90;
+        }
+
+        @keyframes pulsate {
+            0%, 100% { color: black; }
+            50% { color: #ccc; }
+        }
+
+        a:hover, h1:hover {
+            animation: pulsate 2s ease-in-out infinite;
+        }
+
+        #cursor {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        #cursor-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px dotted white;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        #cursor-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Currently under construction, check back later for more! :)</h1>
+    
+    <div class="links">
+        <a href="https://www.nielsgercama.com" target="_blank">artist portfolio</a>
+        <a href="https://github.com/NielsGercama" target="_blank">random github projects</a>
+    </div>
+    
+    <div id="cursor">
+        <video id="cursor-video" autoplay loop muted playsinline>
+            <source src="cursor.mp4" type="video/mp4">
+        </video>
+        <div id="cursor-border"></div>
+    </div>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const border = document.getElementById('cursor-border');
+        let mouseX = 0, mouseY = 0;
+        let lastX = 0, lastY = 0;
+        let rotation = 0;
+        let speed = 0;
+        let hue = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            const deltaX = mouseX - lastX;
+            const deltaY = mouseY - lastY;
+            speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            
+            hue = (hue + speed * 0.5) % 360;
+            
+            lastX = mouseX;
+            lastY = mouseY;
+        });
+
+        function animate() {
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+            
+            rotation += speed * 0.3 + 1;
+            border.style.transform = `rotate(${rotation}deg)`;
+            border.style.borderColor = `hsl(${hue}, 70%, 60%)`;
+            
+            speed *= 0.95;
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
