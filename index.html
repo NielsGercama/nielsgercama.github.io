@@ -24,19 +24,16 @@
             font-size: 2.5rem;
             font-weight: normal;
             color: black;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             text-align: center;
             padding: 2rem;
             letter-spacing: 0.08em;
         }
 
         h1::selection {
-            background-color: #333;
             color: #90EE90;
         }
 
         h1::-moz-selection {
-            background-color: #333;
             color: #90EE90;
         }
 
@@ -54,17 +51,14 @@
             color: black;
             text-decoration: none;
             letter-spacing: 0.05em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             transition: color 0.3s ease;
         }
 
         a::selection {
-            background-color: #333;
             color: #90EE90;
         }
 
         a::-moz-selection {
-            background-color: #333;
             color: #90EE90;
         }
 
@@ -159,6 +153,7 @@
             
             speed *= 0.95;
             
+            cursor.style.radius = '10px';
             requestAnimationFrame(animate);
         }
 
